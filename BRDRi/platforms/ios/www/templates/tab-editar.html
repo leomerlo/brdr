@@ -1,0 +1,28 @@
+<ion-view view-title="Feed">
+  <ion-nav-title>
+    <img src="images/logo.png" class="logo" alt="BRDR">
+  </ion-nav-title>
+  <ion-content class="nuevo">
+    
+    <div class="image-wrapper">
+      <img src="{{post.imagen}}" ng-cloak/>
+    </div>
+    <form ng-submit="editarPost(post)">
+
+      <label class="item item-input item-stacked-label">
+        <span>Comentario</span>
+          <textarea name="texto" ng-model="post.texto" rows="10" ng-cloak>{{post.texto}}</textarea>
+      </label>
+
+      <div class="padding">
+        <button class="button button-block">Actualizar</button>
+      </div>
+
+    </form>
+
+    <div class="padding">
+      <button ng-click="eliminarPost()" class="button button-block button-assertive"><i class="fas fa-trash-alt"></i> Eliminar</button>
+    </div>
+
+  </ion-content>
+</ion-view>

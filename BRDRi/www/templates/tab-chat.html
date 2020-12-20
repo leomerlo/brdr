@@ -1,0 +1,26 @@
+<ion-view view-title="{{titulo}}">
+  <ion-content class="chat">
+    <div class="mensajes">
+      <div ng-repeat="mensaje in mensajes">
+        <div class="card" ng-class="mensaje.arrowClass">
+          <div class="item item-text-wrap">
+            {{mensaje.mensaje}}
+            <span class="fecha">{{mensaje.fecha | date: "hh:mm"}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+  <div class="text-control">
+    <form ng-submit="enviarMensaje(nuevoMensaje)">
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="text" placeholder="Mensaje" ng-model="nuevoMensaje">
+        </label>
+        <button class="button button-small"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </form>
+  </div>
+
+</ion-view>

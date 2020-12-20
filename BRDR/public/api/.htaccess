@@ -1,0 +1,25 @@
+# Verificamos que el módulo de reescritura de urls del
+# Apache esté disponible.
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -MultiViews
+    </IfModule>
+
+    # Encendemos el módulo de reescritura.
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Flags:
+    RewriteRule ^(.*)/$ /$1 [L,R=301]
+
+    # Handle Front Controller...
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+
+    # Allow Authorization header
+    # Este header es necesario para trabajar con tokens en ciertos escenarios standards.
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+</IfModule>

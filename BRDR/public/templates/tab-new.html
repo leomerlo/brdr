@@ -1,0 +1,26 @@
+<ion-view>
+  <ion-nav-title>
+    Crear un nuevo post
+  </ion-nav-title>
+  <ion-content class="nuevo">
+  	<div class="image-wrapper">
+  		<img src="{{post.imagen}}" ng-cloak/>
+  	</div>
+  	<form ng-submit="nuevoPost(post)">
+
+  		<label class="item item-input item-stacked-label">
+  		    <input type="file" name="imagen" ng-model="post.imagen" file-input />
+  		</label>
+
+  		<label class="item item-input item-stacked-label">
+  			<span>Comentario</span>
+  		    <textarea name="texto" ng-model="post.texto" rows="10" ng-cloak>{{post.texto}}</textarea>
+  		</label>
+
+      <div class="padding">
+    		<button class="button button-block">Enviar</button>
+      </div>
+
+  	</form>
+  </ion-content>
+</ion-view>

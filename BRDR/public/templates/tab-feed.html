@@ -1,0 +1,42 @@
+<ion-view>
+  <ion-nav-title>
+    <img src="images/logo.png" class="logo" alt="BRDR">
+  </ion-nav-title>
+  <ion-content>
+
+    <div class="mensaje--nopost padding" ng-if="posts.length < 1">
+      No hay mensajes en el sistema. <a class="actionText--nopost" href="#/tab/new">Sé el primero.</a>
+    </div>
+    
+    <article class="post" ng-repeat="post in posts" ng-if="posts.length > 0">
+      <div class="post__user flex">
+        <span class="img-wrapper round">
+          <img ng-src="http://localhost/BRDR/public/images/users/{{post.usuario.id}}.jpg" alt="user" />
+        </span>
+        <span class="info-wrapper">
+          <span class="username">{{post.usuario.username}}</span>
+        </span>
+        <a class="actionBtn--edit" ng-if="user.id == post.usuario.id" ng-href="#/tab/detalle/{{ post.id }}">
+          <i class="far fa-edit"></i>
+        </a>
+      </div>
+      <div class="post__content--image">
+        <img src="http://localhost/BRDR/public/images/posts/{{post.id}}.jpg" />
+      </div>
+      <div class="post__actions flex">
+        <a ng-if="user.id" class="actionBtn">
+          <i class="far fa-heart"></i>
+        </a>
+        <a ng-if="user.id" class="actionBtn" ng-href="#/tab/feed/{{ post.id }}">
+          <i class="far fa-comments"></i>
+        </a>
+        <span class="comment-number">{{post.comentarios.length}} Comentarios</span>
+      </div>
+      <div class="post__content">
+        <p>{{post.texto}}</p>
+        <a ng-if="post.comentarios.length > 0 && user.id" class="actionText" ng-href="#/tab/feed/{{ post.id }}">Ver los comentarios</a>
+      </div>
+    </article>
+
+  </ion-content>
+</ion-view>

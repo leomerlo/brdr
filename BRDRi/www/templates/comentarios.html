@@ -1,0 +1,41 @@
+<ion-view view-title="Comentarios">
+  <ion-nav-title>
+    <img src="images/logo.png" class="logo" alt="BRDR">
+  </ion-nav-title>
+  <ion-content class="detalle">
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    
+    <article class="post">
+      <div class="post__comments">
+        <div class="flex">
+          <span class="img-wrapper round">
+            <img ng-src="{{imgFolder}}{{post.usuario.id}}.jpg?req={{nuance}}" />
+          </span>
+          <p>{{post.texto}}</p>
+        </div>
+        <div class="respuestas" ng-repeat="comentario in post.comentarios">
+          <div class="flex">
+            <span class="img-wrapper round">
+              <img ng-src="{{imgFolder}}{{comentario.usuario.id}}.jpg?req={{nuance}}" />
+            </span>
+            <p>{{comentario.texto}}</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <form ng-submit="nuevoComentario()">
+      <div class="flex">
+        <span class="img-wrapper round">
+          <img ng-src="{{user.imagen}}.jpg?req={{nuance}}" />
+        </span>
+        <input type="text" ng-model="comentario.texto" name="texto" />
+        <button class="button"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </form>
+
+  </ion-content>
+</ion-view>

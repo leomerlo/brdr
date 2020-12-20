@@ -1,0 +1,12 @@
+<ion-view view-title="Amigos">
+  <ion-content class="amigos">
+    <div class="list">
+
+        <a class="item item-avatar" ng-href="#/tab/mensajes/{{ amigo.amigo.id }}" ng-repeat="amigo in amigos">
+          <img ng-src="{{imgFolder}}/{{amigo.amigo.id}}.jpg?req={{nuance}}">
+          <h2>{{amigo.amigo.username}}</h2>
+        </a>
+
+    </div>
+  </ion-content>
+</ion-view>

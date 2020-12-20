@@ -1,0 +1,29 @@
+<ion-view view-title="BRDR" hide-nav-bar="true">
+    <ion-content class="padding auth--login">
+
+        <a nav-direction="back" ng-href="#/tab/feed" class="actionBtn--alt">
+            <i class="fas fa-times"></i>
+        </a>
+
+        <img class="logo" src="images/logo_alt.png" alt="BRDR">
+
+        <form ng-submit="login(user)" class="login">
+            <div class="item item-input item-stacked-label">
+                <label for="email">Email</label>
+                <input type="text" id="email" ng-model="user.email" name="email">
+            </div>
+
+            <div class="item item-input item-stacked-label">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" ng-model="user.password" name="password">
+            </div>
+
+            <div class="item">
+                <button class="button button-block">Ingresar</button>
+                <a href="#" nav-direction="forward" ng-href="#/registro" class="actionText--auth">Registrate</a>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
+
+

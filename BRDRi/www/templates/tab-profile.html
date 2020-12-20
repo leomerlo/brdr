@@ -1,0 +1,51 @@
+<ion-view view-title="{{title}}">
+	<ion-nav-buttons side="secondary" ng-if="!disable">
+	  <a class="button button-light" href="#/tab/mensajes/{{user.id}}"><i class="fas fa-comments"></i></a>
+	</ion-nav-buttons>
+  <ion-content class="perfil">
+  	<div class="image-wrapper--profile round">
+  		<img src="{{user.imagen}}" ng-cloak/>
+  	</div>
+  	<form ng-submit="update(user)">
+		  <div class="item item-input item-stacked-label" ng-if="!disable">
+	        <input type="file" name="imagen" ng-model="user.imagen" file-input />
+	    </div>
+
+	    <div class="item item-input item-stacked-label">
+          <label for="nombre">Nombre</label>
+	        <input type="text" id="nombre" ng-model="user.nombre" name="nombre" ng-disabled="disable">
+	    </div>
+
+	    <div class="item item-input item-stacked-label">
+        <label for="apellido">Apellido</label>
+	        <input type="text" id="apellido" ng-model="user.apellido" name="apellido" ng-disabled="disable">
+	    </div>
+
+	    <div class="item item-input item-stacked-label">
+        <label for="email">Email</label>
+	        <input type="text" id="email" ng-model="user.email" name="email" ng-disabled="disable">
+	    </div>
+
+	    <div class="item item-input item-stacked-label">
+        <label for="usuario">Usuario</label>
+        <input type="text" id="usuario" ng-model="user.usuario" name="usuario" ng-disabled="disable">
+	    </div>
+
+	    <div class="item item-input item-stacked-label" ng-if="!disable">
+          <label for="password">Contraseña</label>
+	        <input type="password" id="password" ng-model="user.password" name="password">
+	    </div>
+
+	    <div class="item" ng-if="!disable">
+	        <button class="button button-block">Actualizar datos</button>
+          <a ng-click="logout()" class="actionText">Logout</a>
+	    </div>
+
+      <div class="item" ng-if="disable">
+          <a class="button button-block" ng-click="agregarAmigo()" ng-if="!user.es_amigo">Agregar a mis amigos</a>
+          <a class="button button-assertive button-block" ng-click="eliminarAmigo()" ng-if="user.es_amigo">Eliminar de mis amigos</a>
+      </div>
+
+  	</form>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,280 @@
+.tab-feed .tab-title:after, .tab-new .tab-title:after, .tab-profile .tab-title:after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline-block; }
+
+.mensaje, .mensaje--nopost, .post__actions .comment-number {
+  font-family: 'Open Sans', sans-serif; }
+
+form .item, .auth--login .item, .auth--registro .item, .nuevo .item,
+.perfil .item {
+  background: transparent;
+  border: none;
+  margin: 0 15px 40px;
+  padding: 0; }
+  form .item input, .auth--login .item input, .auth--registro .item input, .nuevo .item input,
+  .perfil .item input,
+  form .item textarea, .auth--login .item textarea, .auth--registro .item textarea, .nuevo .item textarea,
+  .perfil .item textarea {
+    width: 100%;
+    color: #FFF;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #FFF;
+    padding: 0 10px; }
+    form .item input::placeholder, .auth--login .item input::placeholder, .auth--registro .item input::placeholder, .nuevo .item input::placeholder,
+    .perfil .item input::placeholder,
+    form .item textarea::placeholder, .auth--login .item textarea::placeholder, .auth--registro .item textarea::placeholder, .nuevo .item textarea::placeholder,
+    .perfil .item textarea::placeholder {
+      color: #FFF; }
+    form .item input.error, .auth--login .item input.error, .auth--registro .item input.error, .nuevo .item input.error,
+    .perfil .item input.error,
+    form .item textarea.error, .auth--login .item textarea.error, .auth--registro .item textarea.error, .nuevo .item textarea.error,
+    .perfil .item textarea.error {
+      border-color: #880000; }
+    form .item input ~ .error, .auth--login .item input ~ .error, .auth--registro .item input ~ .error, .nuevo .item input ~ .error,
+    .perfil .item input ~ .error,
+    form .item textarea ~ .error, .auth--login .item textarea ~ .error, .auth--registro .item textarea ~ .error, .nuevo .item textarea ~ .error,
+    .perfil .item textarea ~ .error {
+      color: #FFF;
+      font-size: 11px;
+      display: block; }
+
+.flex {
+  display: flex;
+  align-items: center; }
+
+.button {
+  border-radius: 0; }
+
+[nav-bar-transition="ios"] [nav-bar="active"] .bar, [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
+  background: #FFF; }
+
+.tab-feed .tab-title:after {
+  content: "\f015";
+  font-size: 20px; }
+
+.tab-new .tab-title:after {
+  content: "\f030";
+  font-size: 20px; }
+
+.tab-profile .tab-title:after {
+  content: "\f007";
+  font-size: 20px; }
+
+.bar,
+.bar .title {
+  height: 60px; }
+  .bar.bar-stable,
+  .bar .title.bar-stable {
+    border-bottom: 1px solid #eaeaea; }
+  .bar .logo,
+  .bar .title .logo {
+    margin-top: 13px; }
+
+.has-header {
+  top: 60px; }
+
+.actionBtn, .actionBtn--alt, .post__user .actionBtn--edit {
+  color: #000;
+  font-size: 16px; }
+
+.actionBtn--alt {
+  color: #FFF; }
+
+.actionText, .mensaje--nopost .actionText--nopost, .auth--login .actionText--auth, .auth--registro .actionText--auth {
+  color: #606060;
+  font-size: 11px; }
+
+.image-wrapper img, .nuevo .image-wrapper--profile img,
+.perfil .image-wrapper--profile img {
+  display: block;
+  margin: 0 auto; }
+
+img {
+  max-width: 100%;
+  max-height: 100%; }
+
+span.back-text {
+  font-size: 14px; }
+
+/* POSTS */
+.mensaje--nopost {
+  font-size: 22px;
+  text-align: center;
+  margin-top: 50px; }
+  .mensaje--nopost .actionText--nopost {
+    font-size: 22px;
+    display: block;
+    margin-top: 25px; }
+
+.post {
+  padding: 0 15px;
+  margin: 15px 0; }
+
+.post__user {
+  margin-top: 10px;
+  margin-bottom: 15px; }
+  .post__user .actionBtn--edit {
+    margin-left: auto; }
+
+.img-wrapper {
+  height: 49px;
+  width: 49px; }
+  .img-wrapper img {
+    max-height: 100%; }
+  .img-wrapper.round img {
+    border-radius: 50px; }
+
+.info-wrapper {
+  margin-left: 10px; }
+
+.post__content, .post__content--image {
+  display: block; }
+
+.post__content--image {
+  margin: 0 -15px; }
+  .post__content--image img {
+    margin: 0 auto;
+    display: block; }
+
+.post__actions {
+  margin: 10px 0; }
+  .post__actions .actionBtn, .post__actions .actionBtn--alt, .post__actions .post__user .actionBtn--edit, .post__user .post__actions .actionBtn--edit {
+    margin-right: 12px; }
+  .post__actions .comment-number {
+    font-size: 11px;
+    margin-left: auto; }
+
+/* END POSTS */
+/* AUTH */
+.auth--login, .auth--registro {
+  background: url("../images/auth_bg.jpg") top left no-repeat;
+  background-size: cover; }
+  .auth--login .actionBtn--alt, .auth--registro .actionBtn--alt {
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+  .auth--login .scroll, .auth--registro .scroll {
+    overflow: hidden; }
+  .auth--login .actionText--auth, .auth--registro .actionText--auth {
+    color: #FFF;
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    font-size: 14px; }
+
+.auth--login .logo {
+  display: block;
+  margin: 70px auto; }
+
+.auth--registro .logo {
+  height: 68px;
+  display: block;
+  margin: 30px auto; }
+
+/* END AUTH */
+/* NUEVO */
+.nuevo .image-wrapper, .nuevo .image-wrapper--profile,
+.perfil .image-wrapper, .perfil .image-wrapper--profile {
+  margin: 40px auto; }
+  .nuevo .image-wrapper img, .nuevo .image-wrapper--profile img,
+  .perfil .image-wrapper img, .perfil .image-wrapper--profile img {
+    margin: 0 auto;
+    display: block; }
+
+.nuevo form .item input, .nuevo .auth--login .item input, .nuevo .auth--registro .item input, .nuevo .nuevo .item input, .nuevo
+.perfil .item input,
+.nuevo form .item textarea,
+.nuevo .auth--login .item textarea,
+.nuevo .auth--registro .item textarea,
+.nuevo .nuevo .item textarea,
+.nuevo
+.perfil .item textarea,
+.perfil form .item input,
+.perfil .auth--login .item input,
+.perfil .auth--registro .item input,
+.perfil .nuevo .item input,
+.perfil
+.perfil .item input,
+.perfil form .item textarea,
+.perfil .auth--login .item textarea,
+.perfil .auth--registro .item textarea,
+.perfil .nuevo .item textarea,
+.perfil
+.perfil .item textarea {
+  color: #000;
+  border-bottom-color: #000; }
+  .nuevo form .item input ~ .error, .nuevo .auth--login .item input ~ .error, .nuevo .auth--registro .item input ~ .error, .nuevo .nuevo .item input ~ .error, .nuevo
+  .perfil .item input ~ .error,
+  .nuevo form .item textarea ~ .error,
+  .nuevo .auth--login .item textarea ~ .error,
+  .nuevo .auth--registro .item textarea ~ .error,
+  .nuevo .nuevo .item textarea ~ .error,
+  .nuevo
+  .perfil .item textarea ~ .error,
+  .perfil form .item input ~ .error,
+  .perfil .auth--login .item input ~ .error,
+  .perfil .auth--registro .item input ~ .error,
+  .perfil .nuevo .item input ~ .error,
+  .perfil
+  .perfil .item input ~ .error,
+  .perfil form .item textarea ~ .error,
+  .perfil .auth--login .item textarea ~ .error,
+  .perfil .auth--registro .item textarea ~ .error,
+  .perfil .nuevo .item textarea ~ .error,
+  .perfil
+  .perfil .item textarea ~ .error {
+    color: #880000; }
+
+.nuevo form .item textarea, .nuevo .auth--login .item textarea, .nuevo .auth--registro .item textarea, .nuevo .nuevo .item textarea, .nuevo
+.perfil .item textarea,
+.perfil form .item textarea,
+.perfil .auth--login .item textarea,
+.perfil .auth--registro .item textarea,
+.perfil .nuevo .item textarea,
+.perfil
+.perfil .item textarea {
+  padding: 15px; }
+
+.nuevo .image-wrapper--profile img,
+.perfil .image-wrapper--profile img {
+  border-radius: 100px;
+  height: 100px;
+  width: 100px; }
+
+/* END NUEVO */
+/* COMMENTS */
+.detalle img {
+  width: 49px;
+  margin-right: 10px; }
+
+.detalle form, .detalle .auth--login, .detalle .auth--registro, .detalle .nuevo, .detalle
+.perfil {
+  padding: 10px 15px;
+  border-top: 1px solid #eaeaea; }
+  .detalle form input, .detalle .auth--login input, .detalle .auth--registro input, .detalle .nuevo input, .detalle
+  .perfil input {
+    width: 200px;
+    color: #000;
+    border-bottom: 1px solid #000; }
+  .detalle form button, .detalle .auth--login button, .detalle .auth--registro button, .detalle .nuevo button, .detalle
+  .perfil button {
+    background: transparent; }
+
+.detalle form .flex, .detalle .auth--login .flex, .detalle .auth--registro .flex, .detalle .nuevo .flex, .detalle
+.perfil .flex {
+  justify-content: space-around; }
+
+.detalle .flex .img-wrapper {
+  flex: 1; }
+
+.detalle .flex p {
+  flex: 4; }
+
+.detalle .respuestas {
+  padding: 0 20px; }
+  .detalle .respuestas > div {
+    margin: 10px 0; }
+
+/* END COMMENTS */

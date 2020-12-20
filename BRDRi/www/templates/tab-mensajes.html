@@ -1,0 +1,16 @@
+<ion-view view-title="Mensajes">
+	<ion-nav-buttons side="secondary">
+	  <a class="button button-light" href="#/tab/amigos"><i class="fas fa-plus"></i></a>
+	</ion-nav-buttons>
+  <ion-content class="mensajes">
+    <div class="list">
+
+        <a class="item item-avatar" ng-href="#/tab/mensajes/{{ conversacion.conv_id }}" ng-repeat="conversacion in conversaciones">
+          <img ng-src="{{imgFolder}}/{{conversacion.conv_id}}.jpg?req={{nuance}}">
+          <h2>{{conversacion.nombre}}</h2>
+          <p>{{conversacion.mensaje}}</p>
+        </a>
+
+    </div>
+  </ion-content>
+</ion-view>
