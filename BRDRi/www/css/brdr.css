@@ -6,24 +6,22 @@
 .mensaje, .mensaje--nopost, .post__actions .comment-number {
   font-family: 'Open Sans', sans-serif; }
 
-form.registro label, .registro.auth--login label, .registro.auth--registro label, .registro.nuevo label,
-.registro.perfil label, form.login label, .login.auth--login label, .login.auth--registro label, .login.nuevo label,
-.login.perfil label {
+form.registro label, .registro.auth--login label, .registro.auth--registro label, .registro.nuevo label, .registro.perfil label, form.login label, .login.auth--login label, .login.auth--registro label, .login.nuevo label, .login.perfil label {
   color: #FFF; }
 
-form label, .auth--login label, .auth--registro label, .nuevo label,
-.perfil label {
+form label, .auth--login label, .auth--registro label, .nuevo label, .perfil label {
   font-size: 10px; }
 
-form .item, .auth--login .item, .auth--registro .item, .nuevo .item,
-.perfil .item {
+form .item, .auth--login .item, .auth--registro .item, .nuevo .item, .perfil .item {
   background: transparent;
   border: none;
   margin: 0 15px 40px;
   padding: 0; }
-  form .item input, .auth--login .item input, .auth--registro .item input, .nuevo .item input,
-  .perfil .item input,
-  form .item textarea, .auth--login .item textarea, .auth--registro .item textarea, .nuevo .item textarea,
+  form .item input, .auth--login .item input, .auth--registro .item input, .nuevo .item input, .perfil .item input,
+  form .item textarea,
+  .auth--login .item textarea,
+  .auth--registro .item textarea,
+  .nuevo .item textarea,
   .perfil .item textarea {
     width: 100%;
     color: #FFF;
@@ -31,19 +29,25 @@ form .item, .auth--login .item, .auth--registro .item, .nuevo .item,
     border: none;
     border-bottom: 2px solid #FFF;
     padding: 0 10px; }
-    form .item input::placeholder, .auth--login .item input::placeholder, .auth--registro .item input::placeholder, .nuevo .item input::placeholder,
-    .perfil .item input::placeholder,
-    form .item textarea::placeholder, .auth--login .item textarea::placeholder, .auth--registro .item textarea::placeholder, .nuevo .item textarea::placeholder,
+    form .item input::placeholder, .auth--login .item input::placeholder, .auth--registro .item input::placeholder, .nuevo .item input::placeholder, .perfil .item input::placeholder,
+    form .item textarea::placeholder,
+    .auth--login .item textarea::placeholder,
+    .auth--registro .item textarea::placeholder,
+    .nuevo .item textarea::placeholder,
     .perfil .item textarea::placeholder {
       color: #FFF; }
-    form .item input.error, .auth--login .item input.error, .auth--registro .item input.error, .nuevo .item input.error,
-    .perfil .item input.error,
-    form .item textarea.error, .auth--login .item textarea.error, .auth--registro .item textarea.error, .nuevo .item textarea.error,
+    form .item input.error, .auth--login .item input.error, .auth--registro .item input.error, .nuevo .item input.error, .perfil .item input.error,
+    form .item textarea.error,
+    .auth--login .item textarea.error,
+    .auth--registro .item textarea.error,
+    .nuevo .item textarea.error,
     .perfil .item textarea.error {
       border-color: #880000; }
-    form .item input ~ .error, .auth--login .item input ~ .error, .auth--registro .item input ~ .error, .nuevo .item input ~ .error,
-    .perfil .item input ~ .error,
-    form .item textarea ~ .error, .auth--login .item textarea ~ .error, .auth--registro .item textarea ~ .error, .nuevo .item textarea ~ .error,
+    form .item input ~ .error, .auth--login .item input ~ .error, .auth--registro .item input ~ .error, .nuevo .item input ~ .error, .perfil .item input ~ .error,
+    form .item textarea ~ .error,
+    .auth--login .item textarea ~ .error,
+    .auth--registro .item textarea ~ .error,
+    .nuevo .item textarea ~ .error,
     .perfil .item textarea ~ .error {
       color: #FFF;
       font-size: 11px;
@@ -100,8 +104,7 @@ form .item, .auth--login .item, .auth--registro .item, .nuevo .item,
   color: #606060;
   font-size: 11px; }
 
-.image-wrapper img, .nuevo .image-wrapper--profile img,
-.perfil .image-wrapper--profile img {
+.image-wrapper img, .nuevo .image-wrapper--profile img, .perfil .image-wrapper--profile img {
   display: block;
   margin: 0 auto; }
 
@@ -197,65 +200,62 @@ span.back-text {
 /* END AUTH */
 /* NUEVO */
 .nuevo .image-wrapper, .nuevo .image-wrapper--profile,
-.perfil .image-wrapper, .perfil .image-wrapper--profile {
+.perfil .image-wrapper,
+.perfil .image-wrapper--profile {
   margin: 40px auto; }
   .nuevo .image-wrapper img, .nuevo .image-wrapper--profile img,
-  .perfil .image-wrapper img, .perfil .image-wrapper--profile img {
+  .perfil .image-wrapper img,
+  .perfil .image-wrapper--profile img {
     margin: 0 auto;
     display: block; }
 
-.nuevo form .item input, .nuevo .auth--login .item input, .nuevo .auth--registro .item input, .nuevo .nuevo .item input, .nuevo
-.perfil .item input,
+.nuevo form .item input, .nuevo .auth--login .item input, .nuevo .auth--registro .item input, .nuevo .nuevo .item input, .nuevo .perfil .item input,
 .nuevo form .item textarea,
 .nuevo .auth--login .item textarea,
 .nuevo .auth--registro .item textarea,
 .nuevo .nuevo .item textarea,
-.nuevo
-.perfil .item textarea,
+.nuevo .perfil .item textarea,
 .perfil form .item input,
 .perfil .auth--login .item input,
 .perfil .auth--registro .item input,
 .perfil .nuevo .item input,
-.perfil
-.perfil .item input,
+.perfil .perfil .item input,
 .perfil form .item textarea,
 .perfil .auth--login .item textarea,
 .perfil .auth--registro .item textarea,
 .perfil .nuevo .item textarea,
-.perfil
-.perfil .item textarea {
+.perfil .perfil .item textarea {
   color: #000;
   border-bottom-color: #000; }
-  .nuevo form .item input ~ .error, .nuevo .auth--login .item input ~ .error, .nuevo .auth--registro .item input ~ .error, .nuevo .nuevo .item input ~ .error, .nuevo
-  .perfil .item input ~ .error,
+  .nuevo form .item input ~ .error, .nuevo .auth--login .item input ~ .error, .nuevo .auth--registro .item input ~ .error, .nuevo .nuevo .item input ~ .error, .nuevo .perfil .item input ~ .error,
   .nuevo form .item textarea ~ .error,
   .nuevo .auth--login .item textarea ~ .error,
   .nuevo .auth--registro .item textarea ~ .error,
   .nuevo .nuevo .item textarea ~ .error,
-  .nuevo
-  .perfil .item textarea ~ .error,
+  .nuevo .perfil .item textarea ~ .error,
   .perfil form .item input ~ .error,
   .perfil .auth--login .item input ~ .error,
   .perfil .auth--registro .item input ~ .error,
   .perfil .nuevo .item input ~ .error,
-  .perfil
-  .perfil .item input ~ .error,
+  .perfil .perfil .item input ~ .error,
   .perfil form .item textarea ~ .error,
   .perfil .auth--login .item textarea ~ .error,
   .perfil .auth--registro .item textarea ~ .error,
   .perfil .nuevo .item textarea ~ .error,
-  .perfil
-  .perfil .item textarea ~ .error {
+  .perfil .perfil .item textarea ~ .error {
     color: #880000; }
 
-.nuevo form .item textarea, .nuevo .auth--login .item textarea, .nuevo .auth--registro .item textarea, .nuevo .nuevo .item textarea, .nuevo
-.perfil .item textarea,
+
+.nuevo form .item textarea,
+.nuevo .auth--login .item textarea,
+.nuevo .auth--registro .item textarea,
+.nuevo .nuevo .item textarea,
+.nuevo .perfil .item textarea,
 .perfil form .item textarea,
 .perfil .auth--login .item textarea,
 .perfil .auth--registro .item textarea,
 .perfil .nuevo .item textarea,
-.perfil
-.perfil .item textarea {
+.perfil .perfil .item textarea {
   padding: 15px; }
 
 .nuevo .image-wrapper--profile img,
@@ -270,21 +270,18 @@ span.back-text {
   width: 49px;
   margin-right: 10px; }
 
-.detalle form, .detalle .auth--login, .detalle .auth--registro, .detalle .nuevo, .detalle
-.perfil {
+.detalle form, .detalle .auth--login, .detalle .auth--registro, .detalle .nuevo,
+.detalle .perfil {
   padding: 10px 15px;
   border-top: 1px solid #eaeaea; }
-  .detalle form input, .detalle .auth--login input, .detalle .auth--registro input, .detalle .nuevo input, .detalle
-  .perfil input {
+  .detalle form input, .detalle .auth--login input, .detalle .auth--registro input, .detalle .nuevo input, .detalle .perfil input {
     width: 200px;
     color: #000;
     border-bottom: 1px solid #000; }
-  .detalle form button, .detalle .auth--login button, .detalle .auth--registro button, .detalle .nuevo button, .detalle
-  .perfil button {
+  .detalle form button, .detalle .auth--login button, .detalle .auth--registro button, .detalle .nuevo button, .detalle .perfil button {
     background: transparent; }
 
-.detalle form .flex, .detalle .auth--login .flex, .detalle .auth--registro .flex, .detalle .nuevo .flex, .detalle
-.perfil .flex {
+.detalle form .flex, .detalle .auth--login .flex, .detalle .auth--registro .flex, .detalle .nuevo .flex, .detalle .perfil .flex {
   justify-content: space-around; }
 
 .detalle .flex .img-wrapper {
@@ -308,12 +305,10 @@ span.back-text {
   position: absolute;
   bottom: 40px;
   width: 100%; }
-  .text-control form .item input, .text-control .auth--login .item input, .text-control .auth--registro .item input, .text-control .nuevo .item input, .text-control
-  .perfil .item input {
+  .text-control form .item input, .text-control .auth--login .item input, .text-control .auth--registro .item input, .text-control .nuevo .item input, .text-control .perfil .item input {
     color: #000;
     border: none; }
-    .text-control form .item input::placeholder, .text-control .auth--login .item input::placeholder, .text-control .auth--registro .item input::placeholder, .text-control .nuevo .item input::placeholder, .text-control
-    .perfil .item input::placeholder {
+    .text-control form .item input::placeholder, .text-control .auth--login .item input::placeholder, .text-control .auth--registro .item input::placeholder, .text-control .nuevo .item input::placeholder, .text-control .perfil .item input::placeholder {
       /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #c0c0c0; }
 

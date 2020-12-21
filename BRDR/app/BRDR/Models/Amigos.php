@@ -13,11 +13,11 @@ class Amigos extends Modelo implements JsonSerializable
 {
 	protected $table 		= "Amigos";
 	protected $primaryKey 	= "id";
-	protected $attributes 	= ['id', 'FK_USUARIO', 'FK_AMIGO'];
+	protected $attributes 	= ['id', 'FK_usuario', 'FK_amigo'];
 
 	protected $id;
-	protected $FK_USUARIO;
-	protected $FK_AMIGO;
+	protected $FK_usuario;
+	protected $FK_amigo;
 
 	/**
      *
@@ -31,7 +31,7 @@ class Amigos extends Modelo implements JsonSerializable
 
         $db = DBConnection::getConnection();
 
-        $query = "SELECT * FROM AMIGOS LEFT JOIN USUARIOS ON AMIGOS.FK_AMIGO = USUARIOS.id WHERE FK_USUARIO = ?";
+        $query = "SELECT * FROM AMIGOS LEFT JOIN USUARIOS ON AMIGOS.FK_amigo = USUARIOS.id WHERE FK_usuario = ?";
 
         $stmt = $db->prepare($query);
         $stmt->execute([$id]);
@@ -58,7 +58,7 @@ class Amigos extends Modelo implements JsonSerializable
 
         $db = DBConnection::getConnection();
 
-        $query = "SELECT * FROM AMIGOS WHERE FK_USUARIO = :user_id AND FK_AMIGO = :amigo_id";
+        $query = "SELECT * FROM AMIGOS WHERE FK_usuario = :user_id AND FK_amigo = :amigo_id";
 
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -87,7 +87,7 @@ class Amigos extends Modelo implements JsonSerializable
 
         $db = DBConnection::getConnection();
 
-        $query = "SELECT * FROM POSTS WHERE FK_USUARIO IN ( SELECT FK_AMIGO FROM AMIGOS WHERE FK_USUARIO = ? )";
+        $query = "SELECT * FROM POSTS WHERE FK_usuario IN ( SELECT FK_amigo FROM AMIGOS WHERE FK_usuario = ? )";
 
         $stmt = $db->prepare($query);
         $stmt->execute([$data]);
@@ -111,11 +111,11 @@ class Amigos extends Modelo implements JsonSerializable
 	public static function delete($data)
 	{
 		$db = DBConnection::getConnection();
-		$stmt = $db->prepare("DELETE FROM AMIGOS WHERE FK_USUARIO = :user_id AND FK_AMIGO = :amigo_id" );
+		$stmt = $db->prepare("DELETE FROM AMIGOS WHERE FK_usuario = :user_id AND FK_amigo = :amigo_id" );
 
 		$exito = $stmt->execute([
-        	'user_id' => $data['FK_USUARIO'],
-        	'amigo_id' => $data['FK_AMIGO']
+        	'user_id' => $data['FK_usuario'],
+        	'amigo_id' => $data['FK_amigo']
         ]);
 
 		if($exito) {
@@ -128,9 +128,8 @@ class Amigos extends Modelo implements JsonSerializable
 
 	public function JsonSerialize()
 	{
-
-		$usuario 	= User::getById($this->FK_USUARIO);
-		$amigo 		= User::getById($this->FK_AMIGO);
+		$usuario 	= User::getById($this->FK_usuario);
+		$amigo 		= User::getById($this->FK_amigo);
 		
 		return [
 			'id' 			=> $this->id,
