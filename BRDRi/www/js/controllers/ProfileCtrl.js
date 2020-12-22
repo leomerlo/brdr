@@ -9,7 +9,8 @@ angular.module('brdr.controllers').controller('ProfileCtrl',
         'Response',
         'API_SERVER',
         'IMAGE_FOLDER',
-        function($scope, $state, $stateParams, Auth, PerfilService, Storage, Response, API_SERVER, IMAGE_FOLDER) {
+        '$ionicLoading',
+        function($scope, $state, $stateParams, Auth, PerfilService, Storage, Response, API_SERVER, IMAGE_FOLDER, $ionicLoading) {
 
             $scope.user = [];
 
@@ -30,12 +31,21 @@ angular.module('brdr.controllers').controller('ProfileCtrl',
                   $scope.user.imagen = '';
                 }
 
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
+
                 Auth.update(user).then(function(rta) {
                   if (rta.success) {
-                      $state.go('tab.feed',{},{ reload: true, inherit: false, notify: true });
+                    Storage.set('userData',user);
+                    $scope.user = user;
+                    $state.go('tab.feed',{},{ reload: true, inherit: false, notify: true });
                   } else {
                       Response.error(rta);
                   }
+
+                  $ionicLoading.hide();
+
                 });
             }
             

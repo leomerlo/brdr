@@ -134,9 +134,9 @@ CREATE TABLE `USUARIOS` (
 --
 
 INSERT INTO `USUARIOS` (`id`, `nombre`, `apellido`, `usuario`, `email`, `password`, `fecha`, `ultima_visita`, `activo`, `FK_PERMISOS`) VALUES
-(1, 'Richard', 'Jones', 'MrJones74', 'rjones@fbi.gov', '$2y$10$xhDKscwV.Yz.oV/UgZEbt.ynQ78tLvul8DWZ6OXak7zJIrECeb6Re', '2018-07-03 00:32:09', '2018-07-03 00:32:09', b'1', 2),
-(2, 'Walter', 'Frey', 'wfrey', 'wfrey@fbi.gov', '$2y$10$PUKp6v4TU8uaQExVkE6ZNOl1cvufKMwxzbc6yCu7rBcZCtSWXV7ky', '2018-07-03 00:49:43', '2018-07-03 00:49:43', b'1', 2),
-(3, 'Nelly', 'Gustavo', 'nelly86', 'nelly86@gmail.com', '$2y$10$11L8nP.OUVMbdn.cNg6e1u3vz/tUIpZbT3B..AcIfLarLq8Ufv7.2', '2018-07-03 01:06:30', '2018-07-03 01:06:30', b'1', 2);
+(1, 'Richard', 'Jones', 'MrJones74', 'rjones@fbi.gov', '$2y$10$CCSSK3KAn1wIYlrf7bzC0Oqw.ef3z/k5v8Xt0Btw/C5yxlhkgSpHO', '2018-07-03 00:32:09', '2018-07-03 00:32:09', b'1', 2),
+(2, 'Walter', 'Frey', 'wfrey', 'wfrey@fbi.gov', '$2y$10$CCSSK3KAn1wIYlrf7bzC0Oqw.ef3z/k5v8Xt0Btw/C5yxlhkgSpHO', '2018-07-03 00:49:43', '2018-07-03 00:49:43', b'1', 2),
+(3, 'Nelly', 'Gustavo', 'nelly86', 'nelly86@gmail.com', '$2y$10$CCSSK3KAn1wIYlrf7bzC0Oqw.ef3z/k5v8Xt0Btw/C5yxlhkgSpHO', '2018-07-03 01:06:30', '2018-07-03 01:06:30', b'1', 2);
 
 --
 -- Table structure for table `AMIGOS`

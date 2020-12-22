@@ -11,6 +11,7 @@ angular.module('brdr.controllers').controller('FeedAmigosCtrl',
         	
             $scope.$on('$ionicView.beforeEnter', function() {
 
+                $scope.nuance = new Date().getTime();
                 $scope.imgFolder = IMAGE_FOLDER;
 
                 PostsService.amigos().then(function(rta) {

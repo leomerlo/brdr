@@ -6,7 +6,8 @@ angular.module('brdr.controllers').controller(
         '$state',
         'Auth',
         'Response',
-        function($scope, $ionicPopup, $state, Auth, Response) {
+        '$ionicLoading',
+        function($scope, $ionicPopup, $state, Auth, Response, $ionicLoading) {
 
             /**
              * Registro de usuarios
@@ -19,12 +20,18 @@ angular.module('brdr.controllers').controller(
                 $('span.error').remove();
                 $('*.error').removeClass('error');
 
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
+
                 Auth.registro(user).then(function(rta) {
                   if (rta.success) {
                       $state.go('login');    
                   } else {
                     Response.error(rta);
                   }
+
+                  $ionicLoading.hide();
                 });
             }
         }

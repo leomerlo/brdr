@@ -9,7 +9,8 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
         'IMAGE_FOLDER',
         'PostsService',
         'ComentarioService',
-        function($scope, $stateParams, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService, ComentarioService) {
+        '$ionicLoading',
+        function($scope, $stateParams, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService, ComentarioService, $ionicLoading) {
 
             $scope.$on('$ionicView.beforeEnter', function() {
 
@@ -32,10 +33,12 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
 
                 //$scope.comentario = $scope.post.id;
 
-                console.log($scope.comentario);
-
                 $('span.error').remove();
                 $('*.error').removeClass('error');
+
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
 
                 ComentarioService.nuevoComentario($scope.post.id,$scope.comentario).then(function(rta) {
                     if (rta.success) {
@@ -46,10 +49,16 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
                     } else {
                         Response.error(rta);
                     }
+
+                    $ionicLoading.hide();
                 });                    
             }
 
             $scope.eliminarComentario = function(id) {
+
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
 
                 ComentarioService.eliminarComentario(id).then(function(rta) {
                     if (rta.success) {
@@ -57,6 +66,8 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
                     } else {
                         Response.error(rta);
                     }
+
+                    $ionicLoading.hide();
                 });                    
             }
 

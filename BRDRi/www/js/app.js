@@ -59,6 +59,9 @@ angular.module('brdr', ['ionic', 'brdr.directives', 'brdr.controllers', 'brdr.se
 
     .state('tab.comentarios', {
       url: '/feed/:id',
+      data: {
+        requireAuth: true
+      },
       views: {
         'tab-feed': {
           templateUrl: 'templates/comentarios.html',
@@ -184,6 +187,6 @@ angular.module('brdr', ['ionic', 'brdr.directives', 'brdr.controllers', 'brdr.se
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/feed');
 
-}).constant('API_SERVER', '/_brdr/brdr/BRDR/public/api')
-.constant('IMAGE_FOLDER', '/_brdr/brdr/BRDR/public/images/');
+}).constant('API_SERVER', '/BRDR/public/api')
+.constant('IMAGE_FOLDER', '/BRDR/public/images/');
 angular.module('brdr.directives', []);

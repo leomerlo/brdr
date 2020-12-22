@@ -59,6 +59,9 @@ angular.module('brdr', ['ionic', 'brdr.directives', 'brdr.controllers', 'brdr.se
 
     .state('tab.comentarios', {
       url: '/feed/:id',
+      data: {
+        requireAuth: true
+      },
       views: {
         'tab-feed': {
           templateUrl: 'templates/comentarios.html',
@@ -184,11 +187,53 @@ angular.module('brdr', ['ionic', 'brdr.directives', 'brdr.controllers', 'brdr.se
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/feed');
 
-}).constant('API_SERVER', '/_brdr/brdr/BRDR/public/api')
-.constant('IMAGE_FOLDER', '/_brdr/brdr/BRDR/public/images/');
+}).constant('API_SERVER', '/BRDR/public/api')
+.constant('IMAGE_FOLDER', '/BRDR/public/images/');
 angular.module('brdr.directives', []);
 angular.module('brdr.controllers', [])
 angular.module('brdr.services', []);
+angular.module('brdr.directives')
+.directive('fileInput', function($q) {
+    let slice = Array.prototype.slice;
+
+    return {
+        restrict: 'A',
+        require: '?ngModel',
+        link: function(scope, element, attrs, ngModel) {
+            if (!ngModel) return;
+
+            ngModel.$render = function() {};
+
+            element.bind('change', function(e) {
+                var element = e.target;
+
+                $q.all(slice.call(element.files, 0).map(readFile))
+                    .then(function(values) {
+                        if (element.multiple) ngModel.$setViewValue(values);
+                        else ngModel.$setViewValue(values.length ? values[0] : null);
+                        ngModel.$render();
+                    });
+
+                function readFile(file) {
+                    var deferred = $q.defer();
+
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        deferred.resolve(e.target.result);
+                    };
+                    reader.onerror = function(e) {
+                        deferred.reject(e);
+                    };
+                    reader.readAsDataURL(file);
+
+                    return deferred.promise;
+                }
+
+            });
+
+        }
+    };
+});
 angular.module('brdr.controllers').controller('AmigosCtrl',
     [
         '$scope',
@@ -300,7 +345,8 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
         'IMAGE_FOLDER',
         'PostsService',
         'ComentarioService',
-        function($scope, $stateParams, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService, ComentarioService) {
+        '$ionicLoading',
+        function($scope, $stateParams, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService, ComentarioService, $ionicLoading) {
 
             $scope.$on('$ionicView.beforeEnter', function() {
 
@@ -323,10 +369,12 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
 
                 //$scope.comentario = $scope.post.id;
 
-                console.log($scope.comentario);
-
                 $('span.error').remove();
                 $('*.error').removeClass('error');
+
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
 
                 ComentarioService.nuevoComentario($scope.post.id,$scope.comentario).then(function(rta) {
                     if (rta.success) {
@@ -337,10 +385,16 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
                     } else {
                         Response.error(rta);
                     }
+
+                    $ionicLoading.hide();
                 });                    
             }
 
             $scope.eliminarComentario = function(id) {
+
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
 
                 ComentarioService.eliminarComentario(id).then(function(rta) {
                     if (rta.success) {
@@ -348,6 +402,8 @@ angular.module('brdr.controllers').controller('ComentarioCtrl',
                     } else {
                         Response.error(rta);
                     }
+
+                    $ionicLoading.hide();
                 });                    
             }
 
@@ -434,6 +490,7 @@ angular.module('brdr.controllers').controller('FeedAmigosCtrl',
         	
             $scope.$on('$ionicView.beforeEnter', function() {
 
+                $scope.nuance = new Date().getTime();
                 $scope.imgFolder = IMAGE_FOLDER;
 
                 PostsService.amigos().then(function(rta) {
@@ -458,12 +515,17 @@ angular.module('brdr.controllers').controller('FeedCtrl',
         'API_SERVER',
         'IMAGE_FOLDER',
         'PostsService',
-        function($scope, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService) {
+        '$ionicLoading',
+        function($scope, $state, Storage, Response, API_SERVER, IMAGE_FOLDER, PostsService, $ionicLoading) {
         	
             $scope.$on('$ionicView.beforeEnter', function() {
 
                 $scope.nuance = new Date().getTime();
                 $scope.imgFolder = IMAGE_FOLDER;
+
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
 
                 PostsService.all().then(function(rta) {
                     if(rta.success){
@@ -471,6 +533,8 @@ angular.module('brdr.controllers').controller('FeedCtrl',
                     } else {
                         Response.error(rta);
                     }
+
+                    $ionicLoading.hide();
 
                 });
                 $scope.user = Storage.get('userData');
@@ -602,7 +666,8 @@ angular.module('brdr.controllers').controller('ProfileCtrl',
         'Response',
         'API_SERVER',
         'IMAGE_FOLDER',
-        function($scope, $state, $stateParams, Auth, PerfilService, Storage, Response, API_SERVER, IMAGE_FOLDER) {
+        '$ionicLoading',
+        function($scope, $state, $stateParams, Auth, PerfilService, Storage, Response, API_SERVER, IMAGE_FOLDER, $ionicLoading) {
 
             $scope.user = [];
 
@@ -623,12 +688,21 @@ angular.module('brdr.controllers').controller('ProfileCtrl',
                   $scope.user.imagen = '';
                 }
 
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
+
                 Auth.update(user).then(function(rta) {
                   if (rta.success) {
-                      $state.go('tab.feed',{},{ reload: true, inherit: false, notify: true });
+                    Storage.set('userData',user);
+                    $scope.user = user;
+                    $state.go('tab.feed',{},{ reload: true, inherit: false, notify: true });
                   } else {
                       Response.error(rta);
                   }
+
+                  $ionicLoading.hide();
+
                 });
             }
             
@@ -653,7 +727,8 @@ angular.module('brdr.controllers').controller(
         '$state',
         'Auth',
         'Response',
-        function($scope, $ionicPopup, $state, Auth, Response) {
+        '$ionicLoading',
+        function($scope, $ionicPopup, $state, Auth, Response, $ionicLoading) {
 
             /**
              * Registro de usuarios
@@ -666,12 +741,18 @@ angular.module('brdr.controllers').controller(
                 $('span.error').remove();
                 $('*.error').removeClass('error');
 
+                $ionicLoading.show({
+                    template: 'Cargando...',
+                })
+
                 Auth.registro(user).then(function(rta) {
                   if (rta.success) {
                       $state.go('login');    
                   } else {
                     Response.error(rta);
                   }
+
+                  $ionicLoading.hide();
                 });
             }
         }
@@ -728,48 +809,6 @@ angular.module('brdr.controllers').controller('UserCtrl',
         }
     ]    
 );
-angular.module('brdr.directives')
-.directive('fileInput', function($q) {
-    let slice = Array.prototype.slice;
-
-    return {
-        restrict: 'A',
-        require: '?ngModel',
-        link: function(scope, element, attrs, ngModel) {
-            if (!ngModel) return;
-
-            ngModel.$render = function() {};
-
-            element.bind('change', function(e) {
-                var element = e.target;
-
-                $q.all(slice.call(element.files, 0).map(readFile))
-                    .then(function(values) {
-                        if (element.multiple) ngModel.$setViewValue(values);
-                        else ngModel.$setViewValue(values.length ? values[0] : null);
-                        ngModel.$render();
-                    });
-
-                function readFile(file) {
-                    var deferred = $q.defer();
-
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        deferred.resolve(e.target.result);
-                    };
-                    reader.onerror = function(e) {
-                        deferred.reject(e);
-                    };
-                    reader.readAsDataURL(file);
-
-                    return deferred.promise;
-                }
-
-            });
-
-        }
-    };
-});
 angular.module('brdr.services')
 .factory('Auth', [
 	'$http',
